@@ -11,22 +11,28 @@ Implementation of a single neuron
 
 class Neuron:
     
-    def __init__ (self, act_fun, bias):
+    def __init__ (self, act, bias):
         self.bias = bias
         self.weights = []
-        self.act_fun = act_fun
+        self.act = act
 
     def feed_forward(self, inputs):
+        self.inputs = inputs
         dot_prod_res = np.dot(inputs,self.weights) + self.bias
-        return self.act_fun(dot_prod_res)
-    
-    """
-        Partial derivative calculation wrt to each weight is given by dE/dw.
-        Applying the chain rule twice results in:
-            dE/dw = dE/dz  * dz/dw -> once
-            dE/dw = dE/dy * dy/dz * -> twice
-            where: E is the cost function
-                   y is the unit's output y = w^Tx + b
-                   z is the unit's input for the specific w
-                   w is the weight
-    """
+        self.outputs = self.act(dot_prod_res)
+        return self.act(dot_prod_res)
+
+def sigmoid(z):
+    return 1./(1+ np.exp(-z))
+
+neuron = Neuron(bias=np.random.normal(0, 1), act=sigmoid)
+print(neuron.bias)
+"Lecture wheather demonstration"
+inputs = [ 0, 1 ]
+num_inputs = len(inputs)
+
+neuron.weights.append(2)
+neuron.weights.append(4)
+
+neuron.feed_forward(inputs)
+print(neuron.outputs)
