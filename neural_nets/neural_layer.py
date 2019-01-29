@@ -19,20 +19,30 @@ class NeuralLayer():
         """
         self.num_neurons = num_neurons
         self.neurons = []
+
         for i in range(self.num_neurons):
-            neuron = Neuron(bias=np.random.normal(0,1), act=act)
+            neuron = Neuron(act=act)
             self.neurons.append(neuron)
-    
+
     def feed_forward(self, inputs):
         """
             Forward propagate the inputs to this Neural Lyaer Neurons
 
             inputs: inputs to the Neural Layer
         """
-        self.outputs = []
+        self.outputs = [] 
         for neuron in self.neurons:
             self.outputs.append(neuron.feed_forward(inputs))
         return self.outputs
+
+    def calculate_total_error(self, targets):
+        """ Calculates total error of network
+
+            targets: list of target of neurons
+        """
+        diff = targets - outputs
+        diff = diff ** 2
+        return np.sum(diff)/2
     
     def inspect(self):
         """
@@ -41,6 +51,5 @@ class NeuralLayer():
         for i in range(len(self.neurons)):
             neuron = self.neurons[i]
             print("\tNeuron_{}".format(i))
-            print("\t\tBias: {}".format(neuron.bias))
             for j in range(len(neuron.weights)):
                 print("\t\tWeight_{}: {}".format(j, neuron.weights[j]))
