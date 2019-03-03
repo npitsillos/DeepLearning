@@ -1,5 +1,5 @@
 # DeepLearning
-Contains everything I have worked with that is associated with DL
+Contains everything I have worked with that is associated with Deep and Reinforcement Learning.
 
 ## Folders
 ### neural_nets
