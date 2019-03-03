@@ -120,7 +120,7 @@ class Agent():
             s_ = o[3]
 
             t = p[i]
-            if s_ is None: # finidhed
+            if s_ is None: # finished
                 t[a] = r
             else:
                 t[a] = r + GAMMA * np.amax(p_[i]) # still to go

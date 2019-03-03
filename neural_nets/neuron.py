@@ -32,7 +32,7 @@ class Neuron:
 
     def error_wrt_net_input(self, target):
         """ Calculation of dE/dz = dE/dy * dy/dz """
-        return error_wrt_output * output_wrt_input()
+        return self.error_wrt_output(target) * self.output_wrt_input()
 
     def error_wrt_output(self, target):
         """ Calculation of dE/dy """

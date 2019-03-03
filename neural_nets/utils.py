@@ -17,7 +17,11 @@ class Input():
         self.inputs = [1] # initially we only have the bias
     
     def set_inputs(self, inputs):
-        self.inputs += inputs
+        for l_input in inputs:
+            self.inputs.append(l_input)
+    
+    def clear_inputs(self):
+        self.inputs = [1]
 
 # Sigmoid
 def sigmoid(z):

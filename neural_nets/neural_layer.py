@@ -34,15 +34,6 @@ class NeuralLayer():
         for neuron in self.neurons:
             self.outputs.append(neuron.feed_forward(inputs))
         return self.outputs
-
-    def calculate_total_error(self, targets):
-        """ Calculates total error of network
-
-            targets: list of target of neurons
-        """
-        diff = targets - outputs
-        diff = diff ** 2
-        return np.sum(diff)/2
     
     def inspect(self):
         """
